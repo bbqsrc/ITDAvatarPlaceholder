@@ -1,11 +1,11 @@
 source 'https://github.com/CocoaPods/Specs.git'
 use_frameworks!
 
-target 'ITDAvatarPlaceholder_Example', :exclusive => true do
+target 'ITDAvatarPlaceholder_Example' do
   pod 'ITDAvatarPlaceholder', :path => '../'
 end
 
-target 'ITDAvatarPlaceholder_Tests', :exclusive => true do
+target 'ITDAvatarPlaceholder_Tests' do
   pod 'ITDAvatarPlaceholder', :path => '../'
 
   pod 'Quick', '~> 0.8'

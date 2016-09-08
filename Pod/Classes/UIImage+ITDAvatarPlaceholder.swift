@@ -47,7 +47,11 @@ public extension UIImage {
     private static func createAvatarPlaceholder(textImage: UIImage?, bgColor: UIColor, placeholderSize: CGSize) -> UIImage {
         UIGraphicsBeginImageContext(placeholderSize)
         
-        let context = UIGraphicsGetCurrentContext();
+        #if swift(>=2.3)
+        let context = UIGraphicsGetCurrentContext()!
+        #else
+        let context = UIGraphicsGetCurrentContext()
+        #endif
         
         CGContextSetFillColorWithColor(context, bgColor.CGColor)
         
@@ -57,7 +61,11 @@ public extension UIImage {
             textImage?.drawInRect(textImageRect)
         }
         
+        #if swift(>=2.3)
+        let avatarPlaceholder = UIGraphicsGetImageFromCurrentImageContext()!
+        #else
         let avatarPlaceholder = UIGraphicsGetImageFromCurrentImageContext()
+        #endif
         
         UIGraphicsEndImageContext()
         
