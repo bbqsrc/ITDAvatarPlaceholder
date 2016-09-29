@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import ChameleonFramework
 
 public extension UIImage {
     
@@ -21,7 +20,8 @@ public extension UIImage {
     
     private static func createAvatarPlaceholder(withText text: String, withBackgroundColor bgColor: UIColor,
                                                          placeholderSize: CGSize, font: UIFont = UIFont.systemFontOfSize(14)) -> UIImage {
-        let textColor = UIColor(contrastingBlackOrWhiteColorOn: bgColor, isFlat: true)
+        
+        let textColor = UIColor.contrastingBlackOrWhiteColor(on: bgColor, isFlat: true)
         let textImage = createTextImage(text, textColor: textColor, font: font.fontWithSize(placeholderSize.height))
         
         return createAvatarPlaceholder(textImage, bgColor: bgColor, placeholderSize: placeholderSize)
