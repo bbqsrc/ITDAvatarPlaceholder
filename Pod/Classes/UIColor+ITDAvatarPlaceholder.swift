@@ -8,7 +8,7 @@
 
 import UIKit
 
-private func hsb(h: Int, _ s: Int, _ b: Int) -> UIColor {
+private func hsb(_ h: Int, _ s: Int, _ b: Int) -> UIColor {
     return UIColor(hue: CGFloat(h), saturation: CGFloat(s), brightness: CGFloat(b), alpha: 1.0)
 }
 
@@ -40,11 +40,11 @@ extension UIColor {
         return colors[name.hashValue % colors.count]
     }
     
-    static func fromInt(value: Int) -> UIColor {
+    static func fromInt(_ value: Int) -> UIColor {
         return UIColor.fromUInt(UInt(abs(value)))
     }
     
-    static func fromUInt(value: UInt) -> UIColor {
+    static func fromUInt(_ value: UInt) -> UIColor {
         return UIColor(
             red: CGFloat((value & 0xFF0000) >> 16) / 255.0,
             green: CGFloat((value & 0x00FF00) >> 8) / 255.0,
@@ -62,7 +62,7 @@ extension UIColor {
         bgColor.getRed(&red, green: &green, blue: &blue, alpha: &alpha)
         
         if alpha == 0 {
-            return UIColor.clearColor()
+            return UIColor.clear
         }
         
         red *= 0.2126
