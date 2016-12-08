@@ -8,10 +8,11 @@
 
 import UIKit
 
+let GoldenRatio: CGFloat = 1.61803398875
+
 public extension UIImage {
     
-    public static func createAvatarPlaceholder(userFullName name: String, placeholderSize: CGSize, maxLettersCount: Int = 3,
-                                                            font: UIFont = UIFont.systemFont(ofSize: 14)) -> UIImage {
+    public static func createAvatarPlaceholder(userFullName name: String, placeholderSize: CGSize, maxLettersCount: Int = 3, font: UIFont = UIFont.systemFont(ofSize: 14)) -> UIImage {
         let text = name.toAvatarPlaceholderText(maxLettersCount)
         let bgColor = UIColor.forAvatarPlaceholderBackground(userFullName: name)
         
@@ -75,7 +76,7 @@ public extension UIImage {
     fileprivate static func getAvatarPlaceholderTextImageRect(_ textImage: UIImage?, _ placeholderSize: CGSize) -> CGRect? {
         guard let textSize = textImage?.size else { return nil }
         
-        let maxHeight = placeholderSize.height/kGoldenRatio
+        let maxHeight = placeholderSize.height / GoldenRatio
         let margin = placeholderSize.width * 0.05
         var width = placeholderSize.width - 2*margin
         var height = (textSize.height*width) / textSize.width

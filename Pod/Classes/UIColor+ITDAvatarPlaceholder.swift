@@ -40,12 +40,8 @@ extension UIColor {
         return colors[name.hashValue % colors.count]
     }
     
-    static func fromInt(_ value: Int) -> UIColor {
-        return UIColor.fromUInt(UInt(abs(value)))
-    }
-    
-    static func fromUInt(_ value: UInt) -> UIColor {
-        return UIColor(
+    public convenience init(int value: UInt) {
+        self.init(
             red: CGFloat((value & 0xFF0000) >> 16) / 255.0,
             green: CGFloat((value & 0x00FF00) >> 8) / 255.0,
             blue: CGFloat(value & 0x0000FF) / 255.0,
@@ -70,7 +66,6 @@ extension UIColor {
         blue *= 0.0722
         
         let luminance = red + green + blue
-        
         
         return (luminance > 0.6)
             ? UIColor(hue: 0, saturation: 0, brightness: 15, alpha: alpha)

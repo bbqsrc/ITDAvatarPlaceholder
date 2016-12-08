@@ -25,7 +25,7 @@ extension String {
             case " ":
                 shouldAddLetter = true
                 
-            case _ where shouldAddLetter && kLetterCharacterSet.contains(UnicodeScalar(ch.value)):
+            case _ where shouldAddLetter && CharacterSet.letters.contains(UnicodeScalar(ch.value)!):
                 shouldAddLetter = false
                 result.append(String(ch))
                 
